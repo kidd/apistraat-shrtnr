@@ -1,0 +1,2 @@
+Creating apistraat-shrtnr... done, stack is cedar
+http://apistraat-shrtnr.herokuapp.com/ | git@heroku.com:apistraat-shrtnr.git
