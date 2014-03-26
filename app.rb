@@ -5,7 +5,7 @@ require 'securerandom'
 
 helpers do
   def redis
-    @@redis ||= Redis.new(url: 'redis://redistogo:1285c75b8902111d6a2a07295357f622@grideye.redistogo.com:9487/')
+    @@redis ||= Redis.new(url: ENV['REDISTOGO_URL'] || 'redis://localhost:6379')
     #  @@redis ||= Redis.new()
   end
 
@@ -13,9 +13,9 @@ end
 
 post '/set' do
   url = params[:url]
-  s = SecureRandom.hex(3)
+  s = SecureRandom.hex(1)
   while redis.get(s)
-    s = SecureRandom.hex(3)
+    s = SecureRandom.hex(1)
   end
   redis.set(s, url)
 
